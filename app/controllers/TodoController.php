@@ -15,4 +15,16 @@ class TodoController
 
         return view('todos/index', compact('todos'));
     }
+
+    /**
+     * Store a new todo in the database.
+     */
+    public function store()
+    {
+        App::get('database')->insert('todos', [
+            'description' => $_POST['description']
+        ]);
+
+        return redirect('todos');
+    }
 }
